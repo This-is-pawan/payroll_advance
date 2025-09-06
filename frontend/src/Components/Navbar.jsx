@@ -14,7 +14,7 @@ const [profile,setPorfile]=useState(' ')
     <div className='bg-white p-4 flex items-center justify-around transition-all duration-400'>
      <div className='w-full max-w-40   flex justify-between items-center max-md:max-w-10 border-none'>
    <h1 className=' flex items-center  font-[900] max-md:hidden'><icons.IoMdEye className=' text-[2rem] shadow rounded-lg cursor-pointer p-1'onClick={()=>setUser(!user)} /></h1>
-   <icons.AiOutlineBars className='w-6 h-6 p-1 cursor-pointer   rounded-md bg-gray-300  min-[768px]:hidden'/>
+   <icons.AiOutlineBars className='w-6 h-6 p-1 cursor-pointer   rounded-md bg-gray-300  min-[768px]:hidden' onClick={()=>setUser(!user)} />
 
   {/* <icons.TbLayoutSidebarLeftCollapseFilled className='cursor-pointer text-[25px] text-pink-600 max-md:hidden' /> */}
 
@@ -33,7 +33,7 @@ const [profile,setPorfile]=useState(' ')
 <div className=' w-full max-w-[200px] flex justify-between items-center'>
 
 <div className="w-7 h-6  p-1 rounded-lg relative bg-white shadow-sm text-center cursor-pointer border ">
-            <p className="w-2.5 h-2.5 absolute top-[1.3px] text-center  left-[11px] text-[7px] rounded-full bg-green-100 text-gray-700  font-bold  border border-gray-400  "><span className=' absolute left-[2px] top-[-1px]'>2</span></p>
+            <p className="w-2.5 h-2.5 absolute top-[1.3px] text-center  left-[10px] text-[7px] rounded-full bg-green-100 text-gray-700  font-bold  border border-gray-400  "><span className=' absolute left-[2px] top-[-1px]'>2</span></p>
             <icons.CiBellOn className="cursor-pointer " />
           </div>
           <div className="w-[1.6rem] h-6 p-1 text-center  rounded-lg relative bg-white shadow-sm cursor-pointer border">
@@ -46,8 +46,17 @@ const [profile,setPorfile]=useState(' ')
             <h1 className="text-[15px] capitalize ">john</h1>
             <p className="text-[10px]">admin</p>
           </div>
-          {profile ?<icons.IoMdArrowDropdown className="cursor-pointer" onClick={()=>setPorfile(!profile)}/>:<icons.IoMdArrowDropup className="cursor-pointer" onClick={()=>setPorfile(!profile)}/>}  
+          <div className='relative'>
+          {profile ?<icons.IoMdArrowDropdown className="cursor-pointer" onClick={()=>setPorfile(!profile)}/>:<>
+          <icons.IoMdArrowDropup className="cursor-pointer" onClick={()=>setPorfile(!profile)}/>
+            <ul className='absolute shadow-md top-8 right-[-10px]  bg-pink-100 text-red-900 p-2 z-30 rounded-md capitalize transition-all duration-300'>
+           <li className=' p-2 text-[13px] hover:text-pink-400  cursor-pointer   '>logout</li>
+           <li className=' p-2 text-[13px] hover:text-pink-400  cursor-pointer  '>verify</li>
+             </ul>
+          </>
+            }  
              
+          </div>
 
     </div>
 </div>

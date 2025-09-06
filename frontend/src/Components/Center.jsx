@@ -3,7 +3,10 @@ import  {icons,payrollcost,EmployeeList,EmployeeListStatus} from './Index'
 import img from '../assets/GuyAvatar.svg'
 
 const Center = () => {
+    const [user,setUser] = useState('')
+
   const [Cal,setCal]=useState(' ')
+
   const [clicked, setClicked] = useState(null);
   const [Slice_1,setSlice_1]=useState(0)
 
@@ -78,15 +81,32 @@ return <div key={id} className="border p-1 m-0.5 rounded-md">
             <icons.IoIosSearch className="text-purple-400  text-[14px]  max-[600px]:text-[12px] tracking-wider" />
           </div>
         </div>
-        <div className='w-full max-w-[150px] flex items-center justify-center '>
-  <h1 className='w-full p-0.5 m-1 flex items-center border rounded-lg text-center justify-center text-[12px] tracking-wider border-green-400 text-green-400'><icons.CiFilter className='m-1 cursor-pointer'/>Filter</h1>
-  <h1 className='w-full p-0.5 m-1 flex items-center border rounded-lg text-center justify-center text-[12px] tracking-wider border-green-400 text-green-400'><icons.MdSort className='m-1 cursor-pointer'/>Sort</h1>
+        <div className='w-full max-w-[150px] flex items-center justify-center relative '>
+  <h1 className='w-full p-0.5 m-1 flex items-center border rounded-lg text-center justify-center text-[12px] tracking-wider border-green-400 text-green-400 pr-2 cursor-pointer' onClick={()=>setUser(!user)} ><icons.CiFilter className='m-1 ' />Filter</h1>
+  {/*  */}
+  {user?<div className='w-full max-w-[100px]: absolute z-10 top-8 shadow-lg
+   bg-pink-200 rounded p-2'>
+      <input type="text " className='w-full text-[10px] rounded text-center tracking-wider' placeholder='Filter' />
+    <div className='w-full grid grid-cols-4  items-center '>
+      <input type="checkbox" id='name'   className="h-[10px] w-[10px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 " />
+      <label htmlFor='name' className='text-[10px] cursor-pointer capitalize relative right-4 ' >name</label>
+       <input type="checkbox" id='role' className="h-[10px] w-[10px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 "/>
+      <label htmlFor='role' className='text-[10px] cursor-pointer capitalize relative right-4 '>role</label>
+       <input type="checkbox" id='salary' className="h-[10px] w-[10px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 " />
+      <label htmlFor='salary' className='text-[10px] cursor-pointer capitalize relative right-4 '>salary</label>
+    </div>
+   
+    </div>:''}
+    {/*  */}
+  <h1 className='w-full p-0.5 m-1 pr-2 flex items-center border rounded-lg text-center justify-center text-[12px] tracking-wider border-green-400 text-green-400 cursor-pointer' ><icons.MdSort className='m-1' />Sort</h1>
         </div>
 </div>
-<hr className='w-full max-w-[100%] mt-4 m-auto '/>
+<hr className='w-full max-w-[100%] mt-4 m-auto text-gray-900 mb-4'/>
 {/* fourth */}
+<div className={` ${user ? "transition-all duration-200 bg-transparent opacity-30 ":"transition-all duration-200"}`}>
+
 {EmployeeListStatus.map(({id,name,payid,role,date,salary,status,action})=>{
-return <div key={id} className='border'>
+  return <div key={id} className='border'>
 <div className='grid grid-cols-7  bg-green-300 gap-2 place-items-center '>
   <p className='text-[10px] p-0.5 capitalize '>{payid}</p>
   <p className='text-[10px] p-0.5 capitalize '>{name}</p>
@@ -97,9 +117,9 @@ return <div key={id} className='border'>
   <p className='text-[10px] p-0.5 capitalize '>{action}</p>
 </div>
 
-{EmployeeList.slice(Slice_1,Slice_1+6).map(({id,name,salary,status,role,date,dots,color},index)=>{
+{EmployeeList.slice(Slice_1,Slice_1+10).map(({id,name,salary,status,role,date,dots,color},index)=>{
   let Icon=icons[dots]
-return <div key={id} className='w-full mt-2 grid grid-cols-7 p-1 place-items-center max-[510px]:p-0 border-b'>
+  return <div key={id} className={` w-full mt-2 grid grid-cols-7 p-1 place-items-center max-[510px]:p-0 border-b `}>
   <p className='text-[10px] p-0.5 capitalize '>{id}</p>
   <div className='w-full grid grid-cols-2 place-items-center max-w-[56px] max-[510px]:mr-7'>
   <img src={img} alt="user" className='w-5 h-5 rounded-full  max-[510px]:w-4 ' />
@@ -123,9 +143,10 @@ return <div key={id} className='w-full mt-2 grid grid-cols-7 p-1 place-items-cen
 </div>
 
 })}
+</div>
 {/* pagination */}
 <div className='w-full flex justify-center mt-6 '>
-  {Array.from({ length:EmployeeList.length / 2}, (_, i) => (
+  {Array.from({ length:EmployeeList.length/2 }, (_, i) => (
   <div key={i} className=" flex items-center m-1 leading-5"><span className={` w-5 h-5   border rounded text-[10px] text-center bg-green-200  cursor-pointer ${Slice_1===i ?"bg-pink-100":"bg-green-300"}`} onClick={(e)=>setSlice_1(i) }>{i+1}</span></div>
   
 ))}
