@@ -173,7 +173,7 @@ let EmployeeList = [
   },
   {
     id: "10",
-    name: "ram",
+    name: "tom",
     role: "UX Designer",
     date: "12-03-2025",
     salary: "$4000.0",
@@ -195,7 +195,7 @@ let EmployeeList = [
   },
   {
     id: "12",
-    name: "ram",
+    name: "pop",
     role: "UX Designer",
     date: "12-03-2025",
     salary: "$4000.0",
@@ -250,7 +250,7 @@ let EmployeeList = [
   },
   {
     id: "17",
-    name: "ram kumar",
+    name: "jay kumar",
     role: "UX Designer",
     date: "12-04-2025",
     salary: "$200.0",
