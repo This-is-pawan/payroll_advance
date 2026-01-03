@@ -15,7 +15,7 @@ const [profile,setPorfile]=useState(' ')
      <div className='w-full max-w-40   flex justify-between items-center max-md:max-w-10 border-none'>
    <h1 className=' flex items-center  font-[900] max-md:hidden'><icons.IoMdEye className=' text-[2rem] shadow rounded-lg cursor-pointer p-1'onClick={()=>setUser(!user)} /></h1>
    <icons.AiOutlineBars className='w-6 h-6 p-1 cursor-pointer   rounded-md bg-gray-300  min-[768px]:hidden' onClick={()=>setUser(!user)} />
-
+ 
   {/* <icons.TbLayoutSidebarLeftCollapseFilled className='cursor-pointer text-[25px] text-pink-600 max-md:hidden' /> */}
 
      </div>
