@@ -5,9 +5,7 @@ import { useGlobalContext } from '../ContextApi'
 
 export const Navbar = () => {
   const {setUser,user} = useGlobalContext()
-  
-  
-  
+
 const [profile,setPorfile]=useState(' ')
 
   return (
